@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite_demo/data/dbHelper.dart';
+import 'package:sqflite_demo/screens/product_add.dart';
 
 import '../models/product.dart';
 
@@ -36,6 +37,11 @@ class _ProductListState extends State{
        title: Text('Ürün listesi'),
      ),
      body: buildProductList(),
+     floatingActionButton: FloatingActionButton(
+       onPressed: () {goToProductAdd();},
+       child: Icon(Icons.add),
+       tooltip: "yeni ürün ekle",
+     ),
    );
   }
 
@@ -57,4 +63,8 @@ class _ProductListState extends State{
     );
   });
  }
+
+  void goToProductAdd() async{
+    await Navigator.push(context, MaterialPageRoute(builder: (context) => ProductAdd()));
+  }
 }
